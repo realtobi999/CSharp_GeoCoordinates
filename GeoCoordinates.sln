@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCoordinates.Core", "GeoCoordinates.Core\GeoCoordinates.Core.csproj", "{1DA2521B-E129-4044-89BD-AB34A076E2E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCoordinates.Tests", "GeoCoordinates.Tests\GeoCoordinates.Tests.csproj", "{6EF9F83F-9A8F-4F07-98C3-FF915202E64F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1DA2521B-E129-4044-89BD-AB34A076E2E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DA2521B-E129-4044-89BD-AB34A076E2E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DA2521B-E129-4044-89BD-AB34A076E2E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF9F83F-9A8F-4F07-98C3-FF915202E64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF9F83F-9A8F-4F07-98C3-FF915202E64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF9F83F-9A8F-4F07-98C3-FF915202E64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF9F83F-9A8F-4F07-98C3-FF915202E64F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
