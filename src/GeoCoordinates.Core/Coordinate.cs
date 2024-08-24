@@ -60,7 +60,10 @@ public class Coordinate
 
     public bool IsWithinDistanceTo(Coordinate coordinate, double range)
     {
-        if (range <= 0) throw new ArgumentException($"{nameof(IsWithinDistanceTo)} '{nameof(range)}' argument needs to be bigger than zero.");
+        if (range <= 0)
+        {
+            throw new ArgumentException($"{nameof(IsWithinDistanceTo)} '{nameof(range)}' argument needs to be bigger than zero.");
+        }
 
         var distance = CoordinateMath.Haversine(this, coordinate);
 
@@ -74,19 +77,31 @@ public class Coordinate
 
     public override bool Equals(object? obj)
     {
-        if (obj is null) return false;
-        if (obj is not Coordinate coordinate) return false;
+        if (obj is null)
+        {
+            return false;
+        }
 
-        if (ReferenceEquals(coordinate, this)) return true;
+        if (obj is not Coordinate coordinate)
+        {
+            return false;
+        }
+
+        if (ReferenceEquals(coordinate, this))
+        {
+            return true;
+        }
 
         return coordinate.Latitude == this.Latitude &&
                coordinate.Longitude == this.Longitude &&
                coordinate.Elevation == this.Elevation;
     }
+
     public double GetDistanceTo(Coordinate coordinate) => CoordinateMath.Haversine(this, coordinate);
 
     public static bool operator ==(Coordinate c1, Coordinate c2) => c1.Equals(c2);
 
     public static bool operator !=(Coordinate c1, Coordinate c2) => !c1.Equals(c2);
+    
     public override int GetHashCode() => HashCode.Combine(Latitude, Longitude, Elevation);
 }

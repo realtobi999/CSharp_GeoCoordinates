@@ -10,8 +10,8 @@ public class CoordinatePathTests
         // prepare
         var coordinates = new List<Coordinate>
         {
-            new Coordinate(52.5200, 13.4050, 0), // Berlin
-            new Coordinate(48.8566, 2.3522, 0)  // Paris
+            new(52.5200, 13.4050, 0), // Berlin
+            new(48.8566, 2.3522, 0)  // Paris
         };
 
         // act & assert
@@ -27,13 +27,13 @@ public class CoordinatePathTests
         // prepare
         var coordinates = new List<Coordinate>
         {
-            new Coordinate(52.5200, 13.4050, 0), // Berlin
-            new Coordinate(48.8566, 2.3522, 0)  // Paris
+            new(52.5200, 13.4050, 0), // Berlin
+            new(48.8566, 2.3522, 0)  // Paris
         };
 
         // act & assert
         var path = new CoordinatePath(coordinates);
-        Assert.True(path.Distance > 0);  // Assuming the helper calculates a valid distance.
+        Assert.True(path.Distance > 0);  // assuming the helper calculates a valid distance.
     }
 
     [Fact]
@@ -42,9 +42,9 @@ public class CoordinatePathTests
         // prepare
         var coordinates = new List<Coordinate>
         {
-            new Coordinate(52.5200, 13.4050, 100),  // Berlin
-            new Coordinate(48.8566, 2.3522, 200),   // Paris
-            new Coordinate(40.7128, -74.0060, 50)   // New York
+            new(52.5200, 13.4050, 100),  // Berlin
+            new(48.8566, 2.3522, 200),   // Paris
+            new(40.7128, -74.0060, 50)   // New York
         };
 
         // act & assert
@@ -59,8 +59,8 @@ public class CoordinatePathTests
         // prepare
         var coordinates = new List<Coordinate>
         {
-            new Coordinate(52.5200, 13.4050, 0), // Berlin
-            new Coordinate(48.8566, 2.3522, 0)  // Paris
+            new(52.5200, 13.4050, 0), // Berlin
+            new(48.8566, 2.3522, 0)  // Paris
         };
 
         var path = new CoordinatePath(coordinates);
@@ -76,8 +76,8 @@ public class CoordinatePathTests
         // prepare
         var coordinates = new List<Coordinate>
         {
-            new Coordinate(52.5200, 13.4050, 0), // Berlin
-            new Coordinate(48.8566, 2.3522, 0)  // Paris
+            new(52.5200, 13.4050, 0), // Berlin
+            new(48.8566, 2.3522, 0)  // Paris
         };
 
         var path = new CoordinatePath(coordinates);
@@ -93,14 +93,14 @@ public class CoordinatePathTests
         // prepare
         var coordinates1 = new List<Coordinate>
         {
-            new Coordinate(52.5200, 13.4050, 0), // Berlin
-            new Coordinate(48.8566, 2.3522, 0)   // Paris
+            new(48.8566, 2.3522, 0),  // Paris
+            new(52.5200, 13.4050, 0), // Berlin
         };
 
         var coordinates2 = new List<Coordinate>
         {
-            new Coordinate(52.5201, 13.4051, 0), // Close to Berlin
-            new Coordinate(48.8565, 2.3523, 0)   // Close to Paris
+            new(52.5201, 13.4051, 0), // Close to Berlin
+            new(48.8565, 2.3523, 0)   // Close to Paris
         };
 
         var path1 = new CoordinatePath(coordinates1);
@@ -117,14 +117,14 @@ public class CoordinatePathTests
         // prepare
         var coordinates1 = new List<Coordinate>
         {
-            new Coordinate(52.5200, 13.4050, 0), // Berlin
-            new Coordinate(48.8566, 2.3522, 0)   // Paris
+            new(52.5200, 13.4050, 0), // Berlin
+            new(48.8566, 2.3522, 0)   // Paris
         };
 
         var coordinates2 = new List<Coordinate>
         {
-            new Coordinate(37.7749, -122.4194, 0),  // San Francisco
-            new Coordinate(34.0522, -118.2437, 0)   // Los Angeles
+            new(37.7749, -122.4194, 0),  // San Francisco
+            new(34.0522, -118.2437, 0)   // Los Angeles
         };
 
         var path1 = new CoordinatePath(coordinates1);
@@ -134,5 +134,49 @@ public class CoordinatePathTests
         var result = path1.IsAlignedWith(path2, 1000);  // 1 km deviation
         Assert.False(result);
     }
-}
 
+    [Fact]
+    public void Simplify_ShouldReturnSameCoordinates_WhenEpsilonIsZero()
+    {
+        // prepare
+        var coordinates = new List<Coordinate>
+            {
+                new(52.5200, 13.4050, 0), // berlin
+                new(51.1657, 10.4515, 0), // somewhere in Germany
+                new(48.8566, 2.3522, 0)   // paris
+            };
+
+        var path = new CoordinatePath(coordinates);
+
+        // act
+        var simplifiedCoordinates = path.Simplify(0);
+
+        // assert
+        Assert.Equal(coordinates, simplifiedCoordinates);
+    }
+
+    [Fact]
+    public void Simplify_ShouldRemoveUnnecessaryPoints_WhenEpsilonIsGreaterThanZero()
+    {
+        // prepare
+        var coordinates = new List<Coordinate>
+            {
+                new(0, 0, 0),     // start
+                new(0.5, 0.5, 0), // near Start (should be removed)
+                new(1, 1, 0),     // end
+            };
+
+        var path = new CoordinatePath(coordinates);
+
+        // act & assert
+        var simplifiedCoordinates = path.Simplify(0.1);
+
+        var expectedCoordinates = new List<Coordinate>
+            {
+                new(0, 0, 0),  // start
+                new(1, 1, 0)   // end
+            };
+
+        Assert.Equal(expectedCoordinates, simplifiedCoordinates);
+    }
+}
