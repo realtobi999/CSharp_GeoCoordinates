@@ -26,8 +26,8 @@ internal class CoordinateMath
         double x1 = lineStart.Latitude, y1 = lineStart.Longitude;
         double x2 = lineEnd.Latitude, y2 = lineEnd.Longitude;
 
-        double numerator = Math.Abs((y2 - y1) * x0 - (x2 - x1) * y0 + x2 * y1 - y2 * x1);
-        double denominator = Math.Sqrt(Math.Pow(y2 - y1, 2) + Math.Pow(x2 - x1, 2));
+        var numerator = Math.Abs((y2 - y1) * x0 - (x2 - x1) * y0 + x2 * y1 - y2 * x1);
+        var denominator = Math.Sqrt(Math.Pow(y2 - y1, 2) + Math.Pow(x2 - x1, 2));
 
         return numerator / denominator;
     }

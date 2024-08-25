@@ -21,9 +21,47 @@ public class CoordinatePath
         (ElevationGain, ElevationLoss) = CoordinatePathHelpers.CalculateElevationChange(Coordinates, 5, 5);
     }
 
-    public bool IsAlignedWith(CoordinatePath path, double deviation) => Algorithms.ArePathsOverlapping(Coordinates, path.Coordinates, deviation);
+    public CoordinatePath Clip(Coordinate start, Coordinate end)
+    {
+        var coordinates = new List<Coordinate>();
+        var found = false;
 
-    public IEnumerable<Coordinate> Simplify(double epsilon) => Algorithms.RamerDouglasPeucker(Coordinates, epsilon);
+        foreach(var coordinate in Coordinates)
+        {
+            if (coordinate == start)
+            {
+                found = true;
+            }
+            if (found)
+            {
+                coordinates.Add(coordinate);
+            }
+            if (coordinate == end)
+            {
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            throw new ArgumentException("Start coordinate not found in the path.");
+        }
+        if (found && coordinates.Last() != end)
+        {
+            throw new ArgumentException("End coordinate not found in the path.");
+        }
+
+        return new(coordinates);
+    }
+
+    public CoordinatePath Simplify(double epsilon)
+    {
+        var coordinates = Algorithms.RamerDouglasPeucker(Coordinates, epsilon);
+
+        return new(coordinates);
+    }
+
+    public bool IsAlignedWith(CoordinatePath path, double deviation) => Algorithms.ArePathsOverlapping(Coordinates, path.Coordinates, deviation);
 
     public Coordinate GetFirstCoordinate() => Coordinates[0];
 

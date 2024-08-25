@@ -92,16 +92,17 @@ public class Coordinate
             return true;
         }
 
-        return coordinate.Latitude == this.Latitude &&
-               coordinate.Longitude == this.Longitude &&
-               coordinate.Elevation == this.Elevation;
+        return coordinate.Latitude == Latitude &&
+               coordinate.Longitude == Longitude &&
+               coordinate.Elevation == Elevation;
     }
 
     public double GetDistanceTo(Coordinate coordinate) => CoordinateMath.Haversine(this, coordinate);
 
+    public override int GetHashCode() => HashCode.Combine(Latitude, Longitude, Elevation);
+
     public static bool operator ==(Coordinate c1, Coordinate c2) => c1.Equals(c2);
 
     public static bool operator !=(Coordinate c1, Coordinate c2) => !c1.Equals(c2);
-    
-    public override int GetHashCode() => HashCode.Combine(Latitude, Longitude, Elevation);
+
 }

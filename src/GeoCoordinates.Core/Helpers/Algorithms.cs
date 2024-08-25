@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace GeoCoordinates.Core.Helpers;
 
 internal class Algorithms
@@ -26,7 +24,7 @@ internal class Algorithms
 
         return true;
     }
-    
+
     public static List<Coordinate> RamerDouglasPeucker(IEnumerable<Coordinate> coordinates, double epsilon)
     {
         if (coordinates.Count() < 2)
