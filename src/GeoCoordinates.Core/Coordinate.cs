@@ -1,4 +1,5 @@
-﻿using GeoCoordinates.Core.Helpers;
+﻿using GeoCoordinates.Core.Extensions;
+using GeoCoordinates.Core.Helpers;
 
 namespace GeoCoordinates.Core;
 
@@ -73,6 +74,14 @@ public class Coordinate
     public override string ToString()
     {
         return $"{Latitude}|{Longitude}|{Elevation}";
+    }
+
+    public string ToPrettyString()
+    {
+        var latitudePrefix = Latitude > 0 ? "N" : "S";
+        var longitudePrefix = Longitude > 0 ? "E" : "W";
+
+        return $"{Math.Abs(Latitude).ToStringDMS()}{latitudePrefix} {Math.Abs(Longitude).ToStringDMS()}{longitudePrefix} Elevation: {Elevation} meters";
     }
 
     public override bool Equals(object? obj)

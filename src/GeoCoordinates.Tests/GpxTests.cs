@@ -20,10 +20,5 @@ public class GpxTests
         path.Distance.Should().BeGreaterThan(1);
         path.ElevationGain.Should().BeGreaterThan(1);
         path.ElevationLoss.Should().BeGreaterThan(1);
-
-        foreach (var coordinate in path.Coordinates)
-        {
-            Console.WriteLine(coordinate.ToString());
-        }
     }
 }

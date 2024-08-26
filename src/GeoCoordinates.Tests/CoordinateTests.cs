@@ -104,4 +104,16 @@ public class CoordinateTests
         Assert.Throws<ArgumentException>(() => coord1.IsWithinDistanceTo(coord2, 0));
         Assert.Throws<ArgumentException>(() => coord1.IsWithinDistanceTo(coord2, -10));
     }
+
+    [Fact]
+    public void ToPrettyString_ShouldFormatCorrectly()
+    {
+        // prepare
+        var coordinate = new Coordinate(1.40339, -122.4194, 15.0);
+
+        // act & assert
+        var result = coordinate.ToPrettyString();
+
+        result.Should().Be("1°24'12.2\"N 122°25'9.8\"W Elevation: 15 meters");
+    }
 }
