@@ -16,7 +16,7 @@ public class GpxHandler : IGpxHandler
     public CoordinatePath LoadGpx(string filepath)
     {
         var gpxDocument = _gpxLoader.GetGpxDocument(filepath);
-        var gpxNamespace = _gpxLoader.GetGpxNamespace(gpxDocument.Root!.GetDefaultNamespace().NamespaceName);
+        var gpxNamespace = _gpxLoader.GetGpxDocumentNamespace(gpxDocument);
 
         var gpx = new Gpx()
         {

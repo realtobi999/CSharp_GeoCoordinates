@@ -6,5 +6,5 @@ namespace GeoCoordinates.Core.GPX;
 public class GpxLoader : IGpxLoader
 {
     public XDocument GetGpxDocument(string filename) => XDocument.Load(filename);
-    public XNamespace GetGpxNamespace(string namespaceName) => XNamespace.Get(namespaceName);
+    public XNamespace GetGpxDocumentNamespace(XDocument document) => document.Root!.GetDefaultNamespace();
 }
