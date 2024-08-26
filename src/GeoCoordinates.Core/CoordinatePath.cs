@@ -5,9 +5,9 @@ namespace GeoCoordinates.Core;
 public class CoordinatePath
 {
     public IReadOnlyList<Coordinate> Coordinates { get; init; }
-    public double Distance { get; private set; }
-    public double ElevationGain { get; private set; }
-    public double ElevationLoss { get; private set; }
+    public double Distance { get; init; }
+    public double ElevationGain { get; init; }
+    public double ElevationLoss { get; init; }
 
     public CoordinatePath(IEnumerable<Coordinate> coordinates)
     {
@@ -21,12 +21,25 @@ public class CoordinatePath
         (ElevationGain, ElevationLoss) = CoordinatePathHelpers.CalculateElevationChange(Coordinates, 5, 5);
     }
 
+    public CoordinatePath(IEnumerable<Coordinate> coordinates, double distance, double elevationGain, double elevationLoss)
+    {
+        if (coordinates.Count() < 2)
+        {
+            throw new ArgumentException("The path must contain at least two coordinates.");
+        }
+
+        Coordinates = coordinates.ToList().AsReadOnly();
+        Distance = distance;
+        ElevationGain = elevationGain;
+        ElevationLoss = elevationLoss;
+    }
+
     public CoordinatePath Clip(Coordinate start, Coordinate end)
     {
         var coordinates = new List<Coordinate>();
         var found = false;
 
-        foreach(var coordinate in Coordinates)
+        foreach (var coordinate in Coordinates)
         {
             if (coordinate == start)
             {
