@@ -2,11 +2,20 @@ using GeoCoordinates.Core.Interfaces;
 
 namespace GeoCoordinates.Core.GPX;
 
+/// <summary>
+/// The GpxHandler class is responsible for loading and processing GPX files to extract coordinate data.
+/// Implements the IGpxHandler interface.
+/// </summary>
 public class GpxHandler : IGpxHandler
 {
     private readonly IGpxProcessor _gpxProcessor;
     private readonly IGpxLoader _gpxLoader;
 
+    /// <summary>
+    /// Constructor for GpxHandler. Initializes the handler with required dependencies.
+    /// </summary>
+    /// <param name="gpxProcessor">An instance of IGpxProcessor to process GPX data.</param>
+    /// <param name="gpxLoader">An instance of IGpxLoader to load GPX files.</param>
     public GpxHandler(IGpxProcessor gpxProcessor, IGpxLoader gpxLoader)
     {
         _gpxProcessor = gpxProcessor;

@@ -2,6 +2,9 @@ using GeoCoordinates.Core.Interfaces;
 
 namespace GeoCoordinates.Core.GPX;
 
+/// <summary>
+/// The GpxProcessor class implements the IGpxProcessor interface and processes GPX documents to extract gpx coordinate data
+/// </summary>
 public class GpxProcessor : IGpxProcessor
 {
     public IEnumerable<Coordinate> GetCoordinates(Gpx gpx)
@@ -18,7 +21,7 @@ public class GpxProcessor : IGpxProcessor
                                             return null;
                                         }
 
-                                        // Return an anonymous type with the correctly parsed values
+                                        // return an anonymous type with the correctly parsed values
                                         return new
                                         {
                                             Latitude = double.Parse(latitude),
@@ -28,7 +31,7 @@ public class GpxProcessor : IGpxProcessor
                                     })
                                     .Where(waypoint => waypoint is not null);
 
-        // Yield return coordinates
+        // yield return coordinates
         foreach (var waypoint in waypoints)
         {
             yield return new Coordinate(waypoint!.Latitude, waypoint.Longitude, waypoint.Elevation);

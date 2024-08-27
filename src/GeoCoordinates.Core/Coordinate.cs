@@ -113,5 +113,4 @@ public class Coordinate
     public static bool operator ==(Coordinate c1, Coordinate c2) => c1.Equals(c2);
 
     public static bool operator !=(Coordinate c1, Coordinate c2) => !c1.Equals(c2);
-
 }
