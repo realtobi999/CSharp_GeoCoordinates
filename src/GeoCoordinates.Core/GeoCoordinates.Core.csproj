@@ -1,18 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>GeoCoordinates.Core</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.1.1</Version>
     <Author>Tobias Filgas</Author>
     <Product>GeoCoordinates</Product>
-    <Description>C# library for anyone working with coordinate data. </Description>
+    <Description>C# library for anyone working with coordinate data.</Description>
+    <PackageTags>coordinate</PackageTags>
 
-    <IncludeContentInPack>true</IncludeContentInPack>
-
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 
@@ -21,9 +20,9 @@
     <RepositoryType>git</RepositoryType>
 
     <PackageReleaseNotes>
-      Added extension method for collections of coordinates to wrap CoordinatePath functionality, allowing quick checks for path alignment without needing to create a CoordinatePath instance manually. 
-      This streamlines common operations like distance calculations and alignment checks. 
-      Added documentation.
+    New GpxHandler.LoadGpxTracks() method for loading tracks from .gpx file.
+    New ToString() method for CoordinatePath class
+    Fixed that documentation is visible outside the project files.
     </PackageReleaseNotes>
 
   </PropertyGroup>

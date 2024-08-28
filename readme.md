@@ -32,13 +32,31 @@ Console.WriteLine($"The distance between the summits is {distance} meters.");
 
 Or you need to figure out the distance of your run which u have saved as a gpx file.
 
-```C#
+``` C#
 var handler = new GpxHandler(new GpxProcessor() ,new GpxLoader());
 var filepath = "./runs/my_fav_run.gpx";
 
-var path = handler.LoadGpx(filepath);
+var run = handler.LoadGpxWaypoints(filepath);
 
 Console.WriteLine($"The distance of the run is {path.Distance} meters");
+```
+
+Or you need to figure out average elevation gain of your saved tracks from gpx file.
+
+``` C#
+var handler = new GpxHandler(new GpxProcessor(), new GpxLoader());
+var filepath = "./runs/my_fav_run.gpx";
+
+var runs = handler.LoadGpxTracks(filepath);
+
+var total = 0.0;
+
+foreach (var run in runs)
+{
+    total += run.ElevationGain;
+}
+
+Console.WriteLine($"The average elevation gain of all your runs is {total / runs.Count()})
 ```
 
 ## Contribution
