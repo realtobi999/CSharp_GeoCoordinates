@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1"
+   creator="MapSource 6.13.7"
+   version="1.1"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.garmin.com/xmlschemas/GpxExtensions/v3
+       http://www.garmin.com/xmlschemas/GpxExtensions/v3/GpxExtensionsv3.xsd
+       http://www.topografix.com/GPX/1/1
+       http://www.topografix.com/GPX/1/1/gpx.xsd">
+
+  <metadata>
+    <link href="http://www.garmin.com">
+      <text>Garmin International</text>
+    </link>
+    <time>2009-03-08T20:11:54Z</time>
+    <bounds
+      maxlat="39.2971185"
+      maxlon="-76.6951826"
+      minlat="39.2035537"
+      minlon="-76.8203088"/>
+  </metadata>
+
+  <wpt lat="39.2445616" lon="-76.7194497">
+    <ele>88.8067627</ele>
+    <name>001</name>
+    <cmt>16-SEP-08 8:50:11AM</cmt>
+    <desc>16-SEP-08 8:50:11AM</desc>
+    <sym>Residence</sym>
+    <extensions>
+       <gpxx:WaypointExtension
+       xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+         <gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
+      </gpxx:WaypointExtension>
+    </extensions>
+  </wpt>
+
+  <wpt lat="39.2422711" lon="-76.7213488">
+    <ele>38.3380127</ele>
+    <name>009</name>
+    <cmt>16-SEP-08 9:40:46AM</cmt>
+    <desc>16-SEP-08 9:40:46AM</desc>
+    <sym>Residence</sym>
+    <extensions>
+      <gpxx:WaypointExtension
+      xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+        <gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
+      </gpxx:WaypointExtension>
+    </extensions>
+  </wpt>
+
+  <trk>
+    <name>Vinyard Springs Loop</name>
+
+    <extensions>
+      <gpxx:TrackExtension
+      xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+        <gpxx:DisplayColor>Transparent</gpxx:DisplayColor>
+      </gpxx:TrackExtension>
+    </extensions>
+
+    <trkseg>
+      <trkpt lat="39.2446415" lon="-76.7199907">
+        <ele>60.2197266</ele>
+        <time>2009-03-08T13:18:25Z</time>
+      </trkpt>
+      <trkpt lat="39.2445078" lon="-76.7193838">
+        <ele>88.0980225</ele>
+        <time>2009-03-08T13:19:23Z</time>
+      </trkpt>
+      <trkpt lat="39.2440145" lon="-76.7200792">
+        <ele>81.3687744</ele>
+        <time>2009-03-08T13:19:43Z</time>
+      </trkpt>
+      <trkpt lat="39.2435182" lon="-76.7208523">
+        <ele>82.3300781</ele>
+        <time>2009-03-08T13:20:04Z</time>
+      </trkpt>
+      <trkpt lat="39.2427701" lon="-76.7212304">
+        <ele>78.9654541</ele>
+        <time>2009-03-08T13:20:52Z</time>
+      </trkpt>
+      <trkpt lat="39.2417241" lon="-76.7208448">
+        <ele>65.0263672</ele>
+        <time>2009-03-08T13:21:43Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+
+  <trk>
+    <name>Patapsco Boundry Ref</name>
+
+    <extensions>
+      <gpxx:TrackExtension
+      xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+        <gpxx:DisplayColor>DarkRed</gpxx:DisplayColor>
+      </gpxx:TrackExtension>
+    </extensions>
+   
+    <trkseg>
+      <trkpt lat="39.2253216" lon="-76.7073387">
+        <ele>46.2806396</ele>
+      </trkpt>
+      <trkpt lat="39.2248415" lon="-76.7065894">
+        <ele>43.3966064</ele>
+      </trkpt>
+      <trkpt lat="39.2194385" lon="-76.7042182">
+        <ele>17.4411621</ele>
+      </trkpt>
+      <trkpt lat="39.2188285" lon="-76.7043919">
+        <ele>15.0377197</ele>
+      </trkpt>
+      <trkpt lat="39.2183665" lon="-76.7051846">
+        <ele>14.0764160</ele>
+      </trkpt>
+      <trkpt lat="39.2180424" lon="-76.7061647">
+        <ele>12.6343994</ele>
+      </trkpt>
+      <trkpt lat="39.2177812" lon="-76.7070982">
+        <ele>11.1925049</ele>
+      </trkpt>
+      <trkpt lat="39.2485097" lon="-76.8098993">
+        <ele>127.5119629</ele>
+      </trkpt>
+    </trkseg>
+  </trk>
+
+</gpx> 

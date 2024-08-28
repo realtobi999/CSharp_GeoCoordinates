@@ -23,7 +23,26 @@ public class GpxHandler : IGpxHandler
     }
 
     /// <inheritdoc/>
-    public CoordinatePath LoadGpx(string filepath)
+    public IEnumerable<CoordinatePath> LoadGpxTracks(string filepath)
+    {
+        var gpx = LoadGpx(filepath);
+
+        var paths = _gpxProcessor.ParseTracks(gpx); 
+
+        return paths;
+    }
+
+    /// <inheritdoc/>
+    public CoordinatePath LoadGpxWaypoints(string filepath)
+    {
+        var gpx = LoadGpx(filepath);
+
+        var coordinates = _gpxProcessor.ParseWaypoints(gpx);
+
+        return new CoordinatePath(coordinates);
+    }
+
+    private Gpx LoadGpx(string filepath)
     {
         var gpxDocument = _gpxLoader.GetGpxDocument(filepath);
         var gpxNamespace = _gpxLoader.GetGpxDocumentNamespace(gpxDocument);
@@ -34,8 +53,6 @@ public class GpxHandler : IGpxHandler
             Namespace = gpxNamespace,
         };
 
-        var coordinates = _gpxProcessor.GetCoordinates(gpx);
-
-        return new CoordinatePath(coordinates);
+        return gpx;
     }
 }
