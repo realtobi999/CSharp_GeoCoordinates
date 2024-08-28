@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using FluentAssertions;
 using GeoCoordinates.Core;
 
@@ -220,5 +221,22 @@ public class CoordinatePathTests
         action1.Should().Throw<ArgumentException>().WithMessage("Start coordinate not found in the path.");
         var action2 = () => path.Clip(coordinates[0], end);
         action2.Should().Throw<ArgumentException>().WithMessage("End coordinate not found in the path.");
+    }
+
+    [Fact]
+    public void TestName()
+    {
+        // prepare
+        var coordinates = new List<Coordinate>
+        {
+            new(52.5200, 13.4050, 0), // berlin
+            new(48.8566, 2.3522, 0)   // paris
+        };
+
+        var path = new CoordinatePath(coordinates);
+
+        // act & assert
+        var result = path.ToString();
+        result.Should().Be("52.52|13.405|0;48.8566|2.3522|0");
     }
 }

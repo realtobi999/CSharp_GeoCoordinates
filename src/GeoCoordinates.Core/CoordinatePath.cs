@@ -117,4 +117,10 @@ public class CoordinatePath
     {
         return Coordinates[Coordinates.Count - 1];
     }
+
+    /// <inheritdoc/>
+    public override string ToString()
+    {
+        return string.Join(";", Coordinates.Select(c => c.ToString()));
+    }
 }

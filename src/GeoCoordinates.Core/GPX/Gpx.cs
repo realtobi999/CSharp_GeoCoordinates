@@ -8,12 +8,12 @@ namespace GeoCoordinates.Core.GPX;
 public struct Gpx
 {
     /// <summary>
-    /// Gets or sets the XML namespace of the GPX document.
+    /// XML namespace of the GPX document.
     /// </summary>
     public XNamespace Namespace { get; set; }
 
     /// <summary>
-    /// Gets or sets the XDocument representing the GPX file.
+    /// XDocument representing the GPX file.
     /// </summary>
     public XDocument Document { get; set; }
 }
