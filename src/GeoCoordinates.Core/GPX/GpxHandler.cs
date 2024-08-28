@@ -22,6 +22,7 @@ public class GpxHandler : IGpxHandler
         _gpxLoader = gpxLoader;
     }
 
+    /// <inheritdoc/>
     public CoordinatePath LoadGpx(string filepath)
     {
         var gpxDocument = _gpxLoader.GetGpxDocument(filepath);

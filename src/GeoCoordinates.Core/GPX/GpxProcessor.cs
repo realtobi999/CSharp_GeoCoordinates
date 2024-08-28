@@ -7,6 +7,7 @@ namespace GeoCoordinates.Core.GPX;
 /// </summary>
 public class GpxProcessor : IGpxProcessor
 {
+    /// <inheritdoc/>
     public IEnumerable<Coordinate> GetCoordinates(Gpx gpx)
     {
         var waypoints = gpx.Document.Descendants(gpx.Namespace + "wpt")

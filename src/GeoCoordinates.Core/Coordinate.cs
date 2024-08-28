@@ -23,8 +23,19 @@ public class Coordinate
     /// </summary>
     public const double LowestElevationPoint = -420;
 
+    /// <summary>
+    /// Latitude of the coordinate, ranging from -90 to 90 degrees.
+    /// </summary>
     public double Latitude { get; }
+
+    /// <summary>
+    /// Longitude of the coordinate, ranging from -180 to 180 degrees.
+    /// </summary>
     public double Longitude { get; }
+
+    /// <summary>
+    /// Elevation of the coordinate in meters.
+    /// </summary>
     public double Elevation { get; }
 
     /// <summary>
@@ -127,6 +138,7 @@ public class Coordinate
         return $"{Math.Abs(Latitude).ToStringDMS()}{latitudePrefix} {Math.Abs(Longitude).ToStringDMS()}{longitudePrefix} Elevation: {Elevation} meters";
     }
 
+    /// <inheritdoc/>
     public override bool Equals(object? obj)
     {
         if (obj is null)
@@ -149,17 +161,21 @@ public class Coordinate
                coordinate.Elevation == Elevation;
     }
 
+    /// <inheritdoc/>
     public override string ToString()
     {
         return $"{Latitude}|{Longitude}|{Elevation}";
     }
 
+    /// <inheritdoc/>
     public override int GetHashCode()
     {
         return HashCode.Combine(Latitude, Longitude, Elevation);
     }
 
+    /// <inheritdoc/>
     public static bool operator ==(Coordinate c1, Coordinate c2) => c1.Equals(c2);
 
+    /// <inheritdoc/>
     public static bool operator !=(Coordinate c1, Coordinate c2) => !c1.Equals(c2);
 }

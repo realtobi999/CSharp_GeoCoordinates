@@ -10,9 +10,12 @@
     <Author>Tobias Filgas</Author>
     <Product>GeoCoordinates</Product>
     <Description>C# library for anyone working with coordinate data. </Description>
+    <Summary>C# library for anyone working with coordinate data. </Summary>
+    <PackageTags>coordinate</PackageTags>
 
     <IncludeContentInPack>true</IncludeContentInPack>
 
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 

@@ -8,9 +8,24 @@ namespace GeoCoordinates.Core;
 /// </summary>
 public class CoordinatePath
 {
+    /// <summary>
+    /// The list of coordinates that make up the path.
+    /// </summary>
     public IReadOnlyList<Coordinate> Coordinates { get; init; }
+
+    /// <summary>
+    /// The total distance of the path in meters.
+    /// </summary>
     public double Distance { get; init; }
+
+    /// <summary>
+    /// The total elevation gain of the path in meters.
+    /// </summary>
     public double ElevationGain { get; init; }
+
+    /// <summary>
+    /// The total elevation loss of the path in meters.
+    /// </summary>
     public double ElevationLoss { get; init; }
 
     /// <summary>
