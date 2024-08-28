@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>GeoCoordinates.Core</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Author>Tobias Filgas</Author>
     <Product>GeoCoordinates</Product>
     <Description>C# library for anyone working with coordinate data. </Description>
@@ -19,6 +19,12 @@
     <PackageProjectUrl>https://github.com/realtobi999/Library_GeoCoordinates</PackageProjectUrl>
     <RepositoryUrl>https://github.com/realtobi999/Library_GeoCoordinates</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+
+    <PackageReleaseNotes>
+      Added extension method for collections of coordinates to wrap CoordinatePath functionality, allowing quick checks for path alignment without needing to create a CoordinatePath instance manually. 
+      This streamlines common operations like distance calculations and alignment checks. 
+      Added documentation.
+    </PackageReleaseNotes>
 
   </PropertyGroup>
 
