@@ -36,33 +36,7 @@ public class CoordinatePath
 
     public CoordinatePath Clip(Coordinate start, Coordinate end)
     {
-        var coordinates = new List<Coordinate>();
-        var found = false;
-
-        foreach (var coordinate in Coordinates)
-        {
-            if (coordinate == start)
-            {
-                found = true;
-            }
-            if (found)
-            {
-                coordinates.Add(coordinate);
-            }
-            if (coordinate == end)
-            {
-                break;
-            }
-        }
-
-        if (!found)
-        {
-            throw new ArgumentException("Start coordinate not found in the path.");
-        }
-        if (found && coordinates.Last() != end)
-        {
-            throw new ArgumentException("End coordinate not found in the path.");
-        }
+        var coordinates = CoordinatePathHelpers.Clip(Coordinates, start, end); 
 
         return new(coordinates);
     }
@@ -74,7 +48,10 @@ public class CoordinatePath
         return new(coordinates);
     }
 
-    public bool IsAlignedWith(CoordinatePath path, double deviation) => Algorithms.ArePathsOverlapping(Coordinates, path.Coordinates, deviation);
+    public bool IsAlignedWith(CoordinatePath path, double deviation)
+    {
+        return Algorithms.ArePathsOverlapping(Coordinates, path.Coordinates, deviation);
+    } 
 
     public Coordinate GetFirstCoordinate() => Coordinates[0];
 

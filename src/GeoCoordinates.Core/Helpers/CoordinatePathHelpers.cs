@@ -43,4 +43,37 @@ internal static class CoordinatePathHelpers
 
         return (gain, Math.Abs(loss));
     }
+
+    public static IEnumerable<Coordinate> Clip(IEnumerable<Coordinate> source, Coordinate start, Coordinate end)
+    {
+        var coordinates = new List<Coordinate>();
+        var found = false;
+
+        foreach (var coordinate in source)
+        {
+            if (coordinate == start)
+            {
+                found = true;
+            }
+            if (found)
+            {
+                coordinates.Add(coordinate);
+            }
+            if (coordinate == end)
+            {
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            throw new ArgumentException("Start coordinate not found in the path.");
+        }
+        if (found && coordinates.Last() != end)
+        {
+            throw new ArgumentException("End coordinate not found in the path.");
+        }
+
+        return coordinates;
+    }
 }

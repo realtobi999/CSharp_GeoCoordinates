@@ -1,18 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>GeoCoordinates.Core</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Author>Tobias Filgas</Author>
     <Product>GeoCoordinates</Product>
+    <Description>C# library for anyone working with coordinate data. </Description>
 
     <IncludeContentInPack>true</IncludeContentInPack>
 
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+
+    <PackageProjectUrl>https://github.com/realtobi999/Library_GeoCoordinates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/realtobi999/Library_GeoCoordinates</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
   </PropertyGroup>
 
   <ItemGroup>
