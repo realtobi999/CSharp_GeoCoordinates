@@ -9,7 +9,7 @@ public class GpxTests
     public void GpxHandler_LoadGpx_Works()
     {
         // prepare
-        var handler = new GpxHandler(new GpxProcessor() ,new GpxLoader());
+        var handler = new GpxHandler(new GpxProcessor(), new GpxLoader());
         var filepath = $"./../../../assets/{nameof(GpxTests)}_{nameof(GpxHandler_LoadGpx_Works)}_TestAsset.gpx";
 
         // act & assert

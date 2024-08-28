@@ -8,6 +8,13 @@ namespace GeoCoordinates.Core.GPX;
 /// </summary>
 public class GpxLoader : IGpxLoader
 {
-    public XDocument GetGpxDocument(string filename) => XDocument.Load(filename);
-    public XNamespace GetGpxDocumentNamespace(XDocument document) => document.Root!.GetDefaultNamespace();
+    public XDocument GetGpxDocument(string filename)
+    {
+        return XDocument.Load(filename);
+    }
+
+    public XNamespace GetGpxDocumentNamespace(XDocument document)
+    {
+        return document.Root!.GetDefaultNamespace();
+    }
 }

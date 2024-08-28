@@ -3,16 +3,37 @@ using GeoCoordinates.Core.Helpers;
 
 namespace GeoCoordinates.Core;
 
+/// <summary>
+/// Represents a geographical coordinate with latitude, longitude, and elevation values.
+/// </summary>
 public class Coordinate
 {
+    /// <summary>
+    /// The format used for string representation of a coordinate (latitude|longitude|elevation).
+    /// </summary>
     public const string StringCoordinateFormat = "latitude|longitude|elevation";
+
+    /// <summary>
+    /// The maximum possible elevation point in meters (e.g., Mount Everest at 8848 meters).
+    /// </summary>
     public const double MaximumElevationPoint = 8848;
+
+    /// <summary>
+    /// The lowest possible elevation point in meters (e.g., the Dead Sea at -420 meters).
+    /// </summary>
     public const double LowestElevationPoint = -420;
 
     public double Latitude { get; }
     public double Longitude { get; }
-    public double Elevation { get; } // in meters
+    public double Elevation { get; }
 
+    /// <summary>
+    /// Initializes a new instance of the <c>Coordinate</c> class with the specified latitude, longitude, and elevation.
+    /// </summary>
+    /// <param name="latitude">The latitude of the coordinate.</param>
+    /// <param name="longitude">The longitude of the coordinate.</param>
+    /// <param name="elevation">The elevation of the coordinate in meters.</param>
+    /// <exception cref="FormatException">Thrown when latitude, longitude, or elevation values are out of range.</exception>
     public Coordinate(double latitude, double longitude, double elevation)
     {
         if (latitude < -90 || latitude > 90)
@@ -35,6 +56,12 @@ public class Coordinate
         Elevation = elevation;
     }
 
+    /// <summary>
+    /// Parses a coordinate string in the format "latitude|longitude|elevation" and returns a new <c>Coordinate</c> object.
+    /// </summary>
+    /// <param name="coordinate">The coordinate string to parse.</param>
+    /// <returns>A new <c>Coordinate</c> object based on the parsed string.</returns>
+    /// <exception cref="FormatException">Thrown if the string format or values are invalid.</exception>
     public static Coordinate Parse(string coordinate)
     {
         var coordinates = coordinate.Split('|');
@@ -59,6 +86,13 @@ public class Coordinate
         return new Coordinate(latitude, longitude, elevation);
     }
 
+    /// <summary>
+    /// Determines if the current coordinate is within a specified distance of another coordinate.
+    /// </summary>
+    /// <param name="coordinate">The coordinate to compare to.</param>
+    /// <param name="range">The maximum distance in meters.</param>
+    /// <returns><c>true</c> if the distance to the other coordinate is within the specified range; otherwise, <c>false</c>.</returns>
+    /// <exception cref="ArgumentException">Thrown if the range is less than or equal to zero.</exception>
     public bool IsWithinDistanceTo(Coordinate coordinate, double range)
     {
         if (range <= 0)
@@ -71,11 +105,20 @@ public class Coordinate
         return distance <= range;
     }
 
-    public override string ToString()
+    /// <summary>
+    /// Calculates the distance between this coordinate and another coordinate using the Haversine formula.
+    /// </summary>
+    /// <param name="coordinate">The other coordinate to measure the distance to.</param>
+    /// <returns>The distance in meters between the two coordinates.</returns>
+    public double GetDistanceTo(Coordinate coordinate)
     {
-        return $"{Latitude}|{Longitude}|{Elevation}";
+        return CoordinateMath.Haversine(this, coordinate);
     }
 
+    /// <summary>
+    /// Returns a human-readable string of the coordinate in a degrees, minutes, and seconds (DMS) format with N/S and E/W prefixes.
+    /// </summary>
+    /// <returns>A formatted string representing the coordinate and elevation.</returns>
     public string ToPrettyString()
     {
         var latitudePrefix = Latitude > 0 ? "N" : "S";
@@ -106,9 +149,15 @@ public class Coordinate
                coordinate.Elevation == Elevation;
     }
 
-    public double GetDistanceTo(Coordinate coordinate) => CoordinateMath.Haversine(this, coordinate);
+    public override string ToString()
+    {
+        return $"{Latitude}|{Longitude}|{Elevation}";
+    }
 
-    public override int GetHashCode() => HashCode.Combine(Latitude, Longitude, Elevation);
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Latitude, Longitude, Elevation);
+    }
 
     public static bool operator ==(Coordinate c1, Coordinate c2) => c1.Equals(c2);
 
