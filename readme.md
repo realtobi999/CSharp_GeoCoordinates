@@ -38,7 +38,7 @@ var filepath = "./runs/my_fav_run.gpx";
 
 var run = handler.LoadGpxWaypoints(filepath);
 
-Console.WriteLine($"The distance of the run is {path.Distance} meters");
+Console.WriteLine($"The distance of the run is {run.Distance} meters");
 ```
 
 Or you need to figure out average elevation gain of your saved tracks from gpx file.
@@ -56,7 +56,7 @@ foreach (var run in runs)
     total += run.ElevationGain;
 }
 
-Console.WriteLine($"The average elevation gain of all your runs is {total / runs.Count()})
+Console.WriteLine($"The average elevation gain of all your runs is {total / runs.Count()}");
 ```
 
 ## Contribution
