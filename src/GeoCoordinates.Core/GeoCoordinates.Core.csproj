@@ -20,9 +20,7 @@
     <RepositoryType>git</RepositoryType>
 
     <PackageReleaseNotes>
-    New GpxHandler.LoadGpxTracks() method for loading tracks from .gpx file.
-    New ToString() method for CoordinatePath class
-    Fixed that documentation is visible outside the project files.
+    Modified the Equals method to compare Coordinate objects using their string representations instead of individual properties, and updated GetHashCode to use the hash code of the string representation rather than combining individual field values.
     </PackageReleaseNotes>
 
   </PropertyGroup>
