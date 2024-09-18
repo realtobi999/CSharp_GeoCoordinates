@@ -156,22 +156,14 @@ public class Coordinate
             return true;
         }
 
-        return coordinate.Latitude == Latitude &&
-               coordinate.Longitude == Longitude &&
-               coordinate.Elevation == Elevation;
+        return ToString() == obj.ToString();
     }
 
     /// <inheritdoc/>
-    public override string ToString()
-    {
-        return $"{Latitude}|{Longitude}|{Elevation}";
-    }
+    public override string ToString() => $"{Latitude}|{Longitude}|{Elevation}";
 
     /// <inheritdoc/>
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Latitude, Longitude, Elevation);
-    }
+    public override int GetHashCode() => ToString().GetHashCode();
 
     /// <inheritdoc/>
     public static bool operator ==(Coordinate c1, Coordinate c2) => c1.Equals(c2);
